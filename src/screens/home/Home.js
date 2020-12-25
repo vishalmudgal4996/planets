@@ -152,7 +152,47 @@ class Home extends Component {
           </div>
         </TabPanel>
         <TabPanel value={this.state.value} index={1}>
-          Fav Planets details
+          <div className="right">
+            <GridList
+              cellHeight={150}
+              cols={4}
+              className={classes.gridListMain}
+            >
+              {this.state.planetList.map(
+                (id) =>
+                  id.isFavourite && (
+                    <GridListTile
+                      key={"grid" + id.id}
+                      className="planets-grid-item"
+                    >
+                      <img
+                        src="https://cdn.mos.cms.futurecdn.net/nGUneraFwt2iCnuu2iSWFf.jpg"
+                        alt={id.id}
+                      />
+                      <GridListTileBar
+                        title={id.name}
+                        classes={{
+                          root: classes.titleBar,
+                          title: classes.title,
+                        }}
+                        actionIcon={
+                          <IconButton
+                            aria-label={`info about ${id.id}`}
+                            onClick={() => this.planetClickHandler(id.id)}
+                          >
+                            {id.isFavourite === false ? (
+                              <StarBorderIcon className={classes.title} />
+                            ) : (
+                              <StarIcon color="primary" />
+                            )}
+                          </IconButton>
+                        }
+                      ></GridListTileBar>
+                    </GridListTile>
+                  )
+              )}
+            </GridList>
+          </div>
         </TabPanel>
       </div>
     );
