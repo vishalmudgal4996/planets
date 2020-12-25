@@ -1,0 +1,13 @@
+.flex-container {
+  display: flex;
+}
+
+.planets-grid-item {
+  margin: 15px;
+  background-color: rosybrown;
+  color: black;
+}
+
+.gridlistmain {
+  transform: "translateZ(0)";
+}
